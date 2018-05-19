@@ -1,5 +1,0 @@
-hellobipin, this is awesome 
-hello bipin, this is awesome 
-hello bipin, you are ${notes.age} 
-hello ${user.username}, you are ${notes.age} years old.
-hello ${user.username}, you are ${notes.age} years old.hello bipin, you are 25.
