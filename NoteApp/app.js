@@ -16,8 +16,14 @@ var command = argv._[0];
 
 
 if (command == 'add'){
-    notes.addNote(argv.title, argv.body);
-    
+    var note = notes.addNote(argv.title, argv.body);
+    if (note){
+        console.log("note created \n");
+        console.log(`Title : ${note.title} \n`);
+        console.log(`Body : \n${note.body}`);
+    } else{
+        console.log("duplicate title exists");
+    }
 }else if (command == 'list'){
     notes.getAll();
 
