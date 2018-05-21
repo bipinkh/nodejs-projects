@@ -40,7 +40,12 @@ var getAll = () => {
 }
 
 var getNote = (title) => {
-    console.log(`reading note : ${title}`);
+    var notes = fetchNotes();
+    //note.filter always takes a function as arguments and returns an array 
+    var foundNotes = notes.filter(
+    (note) => note.title === title
+    );
+    return foundNotes[0];
 }
 
 var removeNote = (title) => {
@@ -51,10 +56,15 @@ var removeNote = (title) => {
     return (notes.length !== newNoteArray.length);
 }
 
+var logNote = (note) => {
+    console.log(`------- \n"${note.title}" \n${note.body} \n------ `);
+}
+
 module.exports ={
     addNote,
     // or, can just write "addNote: addNote" also.
     getAll,
     getNote,
-    removeNote
+    removeNote,
+    logNote
 }

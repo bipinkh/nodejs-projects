@@ -20,8 +20,7 @@ if (command == 'add'){
     var note = notes.addNote(argv.title, argv.body);
     if (note){
         console.log("note created \n");
-        console.log(`Title : ${note.title} \n`);
-        console.log(`Body : \n${note.body}`);
+        notes.logNote(note);
     } else{
         console.log("duplicate title exists");
     }
@@ -34,7 +33,13 @@ if (command == 'add'){
 /* --------------- READ A NOTE ----------------- */
 
 }else if (command == 'read'){
- notes.getNote(argv.title);
+ var note = notes.getNote(argv.title);
+    if (note){
+        console.log("note found \n");
+        notes.logNote(note);
+    }else{
+        console.log("note not found");
+    }
     
 /* --------------- REMOVE A NOTE ----------------- */
 
