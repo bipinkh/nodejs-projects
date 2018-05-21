@@ -12,7 +12,7 @@ const notes = require("./notes.js");
 console.log(yargs.argv);
 
 var argv = yargs.argv;
-var command = process.argv[2];
+var command = argv._[0];
 
 
 if (command == 'add'){
@@ -22,7 +22,7 @@ if (command == 'add'){
     notes.getAll();
 
 }else if (command == 'read'){
- notes.getNote(argv.title);
+ notes.getNote(argv.title);o
     
 }else if (command == 'remove'){
     notes.removeNote(argv.title);

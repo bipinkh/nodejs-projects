@@ -1,7 +1,32 @@
 console.log("Starting notes.js");
 
+const fs = require('fs');
+
 var addNote = (title, body) => {
-    console.log(` adding note.\n title = ${title}. \n body = ${body}.`)
+    var notes = [];
+    var note = {
+        title,
+        body
+    };
+    
+    try{
+        var noteString = fs.readFileSync("notes-data.json");
+        notes = JSON.parse(noteString);
+    }catch(e){
+        // do nothing if there is no file, or the file is empty or the file has non json format value
+    }
+    
+    var duplicateNotes = notes.filter(
+        (note) => {
+        return note.title == title;
+    }
+    );
+    
+    if (duplicateNotes.length ==0){
+         notes.push(note);
+        fs.writeFileSync('notes-data.json',JSON.stringify(notes));
+    }
+   
 };
 
 var getAll = () => {
